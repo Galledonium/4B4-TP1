@@ -1,14 +1,13 @@
 public class CV {
 	
-	
-	CV gregson = new CV(
+	private static CV gregson = new CV(
 			"Gregson",
 			"Destin",
 			"Informatique de Gestion",
 			"Centre d'appel Rotisserie St-Hubert (2 Novembre 2017 - ...)",
 			"Communication impeccable, Patience gargantuesque, Concentration accrue, Performant",
 			"Note finale minimale de 80%.");
-	CV isaac = new CV(
+	private static CV isaac = new CV(
 			"Isaac David",
 			"Zolana",
 			"Informatique de Gestion",
@@ -37,16 +36,25 @@ public class CV {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Bienvenue chez Barette!");
+		System.out.println("Bienvenue chez Barette!\n");
+		
+		System.out.println(gregson.affiche());
+		
+		System.out.print("\n");
+		
+		System.out.println(isaac.affiche());
 
 	}
 	
-	public void affiche(CV cv) {
+	public String affiche() {
 		
-		
+		return 	"CV de " + prenom + " " + nom + ":\n\n" +
+				"Prenom:\t\t\t\t " + prenom + "\n" +
+				"Nom:\t\t\t\t " + nom + "\n" +
+				"Formation:\t\t\t " + formation + "\n" +
+				"Expérience(s) de travail:\t " + expTravail + "\n" +
+				"Compétences:\t\t\t " + competences + "\n" +
+				"Attentes vis à vis le cours:\t " + attentes;
 		
 	}
-	
-	
-
 }
