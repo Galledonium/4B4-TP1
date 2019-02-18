@@ -4,9 +4,9 @@ public class Plat {
 	private String repas;
 	private double prix;
 	
-	public Plat() {
+	public Plat(String repas) {
 		
-		
+		this.repas = repas;
 		
 	}
 	
