@@ -30,7 +30,7 @@ public class CV {
 		this.formation = formation;
 		this.expTravail = expTravail;
 		this.competences = competences;
-		this.attentes = attentes
+		this.attentes = attentes;
 		
 	}	
 

@@ -1,0 +1,10 @@
+Spécifications détaillés de chaque fonctionalités :
+
+Isaac :
+- Modifier la méthode getPrixTotal de la classe Client qui retournera un tableau avec chacun des différents prix des clients. 
+Ex : Tab[0] = Sous-total (Prix total sans les taxes)
+     Tab[1] = Montant du TPS
+     Tab[2] = Montant du TVQ
+- Ajout d'une méthode enregistrer dans la classe Fichier qui permettra d'enregistrer un fichier dans un package sous le nom de "enregistrements" dans le format suivant :
+	Facture-du-[date]-[heure].txt
+	Le fichier contiendra la facture.

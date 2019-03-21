@@ -1,0 +1,9 @@
+-Distribution des tâches-
+
+Isaac:
+-Appliquer les taxes a la facture (TPS(5%), TVQ(10%))
+-Création d'un fichier avec le nom "Facture-du-[date]-[heure].txt"
+
+Gregson:
+-Afficher les commandes incorrects avec les détails de la commande et la raison de l'erreur avant les factures correctes dans le terminal et dans le fichier
+-Ignorer les factures avec un total de 0$
