@@ -67,5 +67,14 @@ class FichierTest {
 		
 		assertEquals(3, fichier.getClientListSize());
 	}
+	
+	@Test
+	public void testNombreClientsDansListePlatsApresLectureFichier () throws IOException {
+		Fichier fichier = new Fichier();
+
+		fichier.lire();
+		
+		assertEquals(3, fichier.getPlatListSize());
+	}
 
 }
