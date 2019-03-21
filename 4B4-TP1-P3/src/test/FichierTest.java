@@ -58,5 +58,14 @@ class FichierTest {
 			
 		}
 	}
+	
+	@Test
+	public void testNombreClientsDansListeClientsApresLectureFichier () throws IOException {
+		Fichier fichier = new Fichier();
+
+		fichier.lire();
+		
+		assertEquals(3, fichier.getClientListSize());
+	}
 
 }
