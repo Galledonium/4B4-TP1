@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import main.Client;
+import main.Commande;
 import main.Fichier;
 import main.Plat;
 
@@ -39,6 +40,21 @@ class FichierTest {
 		for(Plat plat : liste) {
 			
 			assertNotNull(plat);
+			
+		}
+	}
+	
+	@Test
+	public void testAjoutClientDansListeCommandes() throws IOException {
+		Fichier fichier = new Fichier();
+		
+		fichier.lire();
+
+		ArrayList<Commande> liste = fichier.getListeCommandes();
+		
+		for(Commande commande : liste) {
+			
+			assertNotNull(commande);
 			
 		}
 	}
