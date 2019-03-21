@@ -37,7 +37,7 @@ public class Fichier {
 		
 	}
 	
-	public void lecture () throws IOException {
+	public void lire () throws IOException {
 		this.lireClients();
 	}
 	
@@ -183,6 +183,42 @@ public class Fichier {
 			}
 			
 		}
+		
+	}
+	
+	public ArrayList<Client> getListeClients() {
+		
+		return listeClients;
+		
+	}
+	
+	public ArrayList<Plat> getListePlats() {
+		
+		return listePlats;
+		
+	}
+
+	public ArrayList<Commande> getListeCommandes() {
+	
+		return listeCommandes;
+	
+	}
+	
+	public int getClientListSize() {
+		
+		return listeClients.size();
+		
+	}
+	
+	public int getPlatListSize() {
+		
+		return listePlats.size();
+		
+	}
+	
+	public int getCommandeListSize() {
+		
+		return listeCommandes.size();
 		
 	}
 	

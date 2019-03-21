@@ -5,5 +5,5 @@ Isaac:
 -Création d'un fichier avec le nom "Facture-du-[date]-[heure].txt"
 
 Gregson:
--Afficher les commandes incorrects avec les détails de la commande et la raison de l'erreur avant les factures correctes dans le terminal et dans le fichier
--Ignorer les factures avec un total de 0$
+-Afficher les commandes incorrectes avec les détails de la commande et la raison de l'erreur avant les factures correctes dans le terminal et dans le fichier
+-Ignorer les factures avec un total de 0$ dans le fichier

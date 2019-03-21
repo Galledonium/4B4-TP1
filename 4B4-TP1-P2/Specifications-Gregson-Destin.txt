@@ -5,4 +5,4 @@ Création d'une méthode verifierCommande() qui recoit en paramètre un objet co
 [Erreur, le Client n'existe pas] ou [Erreur, le repas n'existe pas], dépendant de la nature de l'erreur.
 
 -(Ignorer les factures avec un total de 0$ dans le fichier)
-Lors de l'écriture des commandes dans le fichier texte, il sera question d'ajouter une condition qui vérifie si le prix total des commandes de chaque objet Client est différent de 0. Si c'est le cas, elle est affichée, et dans le cas contraire, elle ne l'est pas.
+La méthode verifierCommande() retourne un string vide si le total des commandes est de 0$, a moins qu'il y ait une erreur à afficher.
