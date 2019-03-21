@@ -1,3 +1,5 @@
+package main;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -22,7 +24,7 @@ public class Fichier {
 	private Client clientTemp;
 	private Plat platTemp;
 	
-	private Path cheminFichier = Paths.get("src", "commandes.txt");
+	private Path cheminFichier = Paths.get("src/main", "commandes.txt");
 	private final Path cheminSortie = Paths.get("src");
 	
 	public Fichier () throws IOException {
