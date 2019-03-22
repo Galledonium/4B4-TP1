@@ -1,0 +1,10 @@
+Normes de programmation:
+
+-Les noms doivent être significatifs.
+-Les noms de variables doivent commencer par une minuscule. Cependant, s'il y a plus qu'un mot dans le nom, chaque mot conséquent doit commencer par une majuscule.
+-Les noms d'objets doivent commencer par une minuscule. Cependant, s'il y a plus qu'un mot dans le nom, chaque mot conséquent doit commencer par une majuscule.
+-Les noms de classe doivent commencer par une majuscule. Cependant, s'il y a plus qu'un mot dans le nom, chaque mot conséquent doit commencer par une majuscule.
+-Les noms de méthode doivent commencer par une minuscule. Cependant, s'il y a plus qu'un mot dans le nom, chaque mot conséquent doit commencer par une majuscule.
+-Les noms d'accesseurs doivent commencer par "get", et finir par le nom de variable à accéder.
+-Les noms de mutateurs doivent commencer par "set", et finir par le nom de variable à modifier.
+-Les methodes avec retour booléen doivent commencer par "is" ou "has".
