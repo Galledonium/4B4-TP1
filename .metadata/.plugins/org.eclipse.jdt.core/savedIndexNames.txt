@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.131+C:\Users\Gregson\4B4-TP1\.metadata\.plugins\org.eclipse.jdt.core
 4275611123.index
 960919122.index
@@ -14,3 +15,7 @@ INDEX VERSION 1.131+C:\Users\Gregson\4B4-TP1\.metadata\.plugins\org.eclipse.jdt.
 3276590786.index
 1888955860.index
 1388319034.index
+=======
+INDEX VERSION 1.131+C:\Users\Isaac David Zolana\4B4-TP1\.metadata\.plugins\org.eclipse.jdt.core
+4124508424.index
+>>>>>>> 67ab903200c4aadccb3939277333785002182ab1

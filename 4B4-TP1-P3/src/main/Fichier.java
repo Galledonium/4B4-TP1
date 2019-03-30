@@ -24,8 +24,13 @@ public class Fichier {
 	private Client clientTemp;
 	private Plat platTemp;
 	
+<<<<<<< HEAD
 	private Path cheminFichier = Paths.get("src/main", "commandes.txt");
 	private final Path cheminSortie = Paths.get("src");
+=======
+	private Path cheminFichier = Paths.get("src/fichiers", "commandes.txt");
+	private final Path cheminSortie = Paths.get("src/fichiers");
+>>>>>>> 67ab903200c4aadccb3939277333785002182ab1
 	
 	public Fichier () throws IOException {
 		
@@ -37,7 +42,11 @@ public class Fichier {
 		
 	}
 	
+<<<<<<< HEAD
 	public void lire () throws IOException {
+=======
+	public void lecture () throws IOException {
+>>>>>>> 67ab903200c4aadccb3939277333785002182ab1
 		this.lireClients();
 	}
 	
@@ -186,6 +195,7 @@ public class Fichier {
 		
 	}
 	
+<<<<<<< HEAD
 	public ArrayList<Client> getListeClients() {
 		
 		return listeClients;
@@ -222,6 +232,8 @@ public class Fichier {
 		
 	}
 	
+=======
+>>>>>>> 67ab903200c4aadccb3939277333785002182ab1
 	private void afficherFactures() {
 		
 		System.out.println(message);
