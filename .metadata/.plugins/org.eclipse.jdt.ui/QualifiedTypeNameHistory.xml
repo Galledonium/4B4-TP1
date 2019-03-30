@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="main.Fichier"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="main.Client"/>
+<fullyQualifiedTypeName name="main.Plat"/>
+<fullyQualifiedTypeName name="main.Commande"/>
+</qualifiedTypeNameHistroy>
