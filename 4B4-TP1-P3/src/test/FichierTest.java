@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import main.Client;
@@ -13,14 +15,23 @@ import main.Fichier;
 import main.Plat;
 
 class FichierTest {
+	
+	private Fichier fichierTest;
+	
+	@BeforeEach
+	public void setUp() throws IOException {
+		
+		fichierTest = new Fichier();
+		fichierTest.lire();
+		System.out.println("test");
+		
+	}
 
 	@Test
 	public void testAjoutClientDansListeClients() throws IOException {
-		Fichier fichier = new Fichier();
 		
-		fichier.lire();
 
-		ArrayList<Client> liste = fichier.getListeClients();
+		ArrayList<Client> liste = fichierTest.getListeClients();
 		
 		for(Client client : liste) {
 			
@@ -29,13 +40,12 @@ class FichierTest {
 		}
 	}
 	
+	
+	
 	@Test
 	public void testAjoutClientDansListePlats() throws IOException {
-		Fichier fichier = new Fichier();
-		
-		fichier.lire();
 
-		ArrayList<Plat> liste = fichier.getListePlats();
+		ArrayList<Plat> liste = fichierTest.getListePlats();
 		
 		for(Plat plat : liste) {
 			
@@ -46,11 +56,8 @@ class FichierTest {
 	
 	@Test
 	public void testAjoutClientDansListeCommandes() throws IOException {
-		Fichier fichier = new Fichier();
-		
-		fichier.lire();
 
-		ArrayList<Commande> liste = fichier.getListeCommandes();
+		ArrayList<Commande> liste = fichierTest.getListeCommandes();
 		
 		for(Commande commande : liste) {
 			
@@ -61,29 +68,44 @@ class FichierTest {
 	
 	@Test
 	public void testNombreClientsDansListeClientsApresLectureFichier () throws IOException {
-		Fichier fichier = new Fichier();
-
-		fichier.lire();
 		
-		assertEquals(3, fichier.getClientListSize());
+		assertEquals(3, fichierTest.getClientListSize());
 	}
 	
 	@Test
 	public void testNombreClientsDansListePlatsApresLectureFichier () throws IOException {
-		Fichier fichier = new Fichier();
-
-		fichier.lire();
 		
-		assertEquals(3, fichier.getPlatListSize());
+		assertEquals(3, fichierTest.getPlatListSize());
 	}
 	
 	@Test
 	public void testNombreClientsDansListeCommandesApresLectureFichier () throws IOException {
-		Fichier fichier = new Fichier();
-
-		fichier.lire();
 		
-		assertEquals(3, fichier.getCommandeListSize());
+		assertEquals(3, fichierTest.getCommandeListSize());
+		
+	}
+	
+	@Test
+	public void testSousTotalTPSTVQTotalClient() throws IOException{
+
+		assertEquals(4, fichierTest.getListeClients().get(0).getTabPrix().length);
+		
+	}
+	
+	@Test
+	public void testEcritureDansFichierFacture() throws IOException{
+		
+		fichierTest.ecrireFichier();
+		
+		assertEquals(4, fichierTest.getListeClients().get(0).getTabPrix().length);
+		
+	}
+	
+	@AfterEach
+	public void tearDown() {
+		
+		fichierTest = null;
+		
 	}
 
 }

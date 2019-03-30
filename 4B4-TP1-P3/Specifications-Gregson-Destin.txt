@@ -1,8 +1,7 @@
-Gregson
+﻿Gregson
 
 -(Afficher les commandes incorrectes avec les détails de la commande et la raison de l'erreur avant les factures correctes dans le terminal et dans le fichier)
-Création d'une méthode verifierCommande() qui recoit en paramètre un objet commande et qui retourne un string. Si l'objet Client contient des erreurs, il modifiera le message en concaténant 
-[Erreur, le Client n'existe pas] ou [Erreur, le repas n'existe pas], dépendant de la nature de l'erreur.
+Création d'une méthode verifierCommande() qui recoit en paramètre un objet tableau de String et qui retourne un string. Si l'objet Client contient des erreurs, ajoutera un message notifiant de la nature exacte de l'erreur.
 
 -(Ignorer les factures avec un total de 0$ dans le fichier)
 Lors de l'écriture des commandes dans le fichier texte, il sera question d'ajouter une condition qui vérifie si le prix total des commandes de chaque objet Client est différent de 0. Si c'est le cas, elle est affichée, et dans le cas contraire, elle ne l'est pas.
