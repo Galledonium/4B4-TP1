@@ -150,6 +150,16 @@ public class FichierTest {
 		
 		assertEquals(messageErreur, fichier.verifierCommande(tab));
 		assertEquals(5, fichier.getListeMessagesErreur().size());
+	
+		// Commande avec client existant, plat inexistant et quantité de commande décimale
+		tab[0] = "Roger";
+		tab[1] = "Bacon";
+		tab[2] = "2.5";
+		
+		messageErreur = "\nLa commande (Roger Bacon 2.5) est invalide car le plat n'existe pas et quantité dans la commande est erronée.\n";
+		
+		assertEquals(messageErreur, fichier.verifierCommande(tab));
+		assertEquals(6, fichier.getListeMessagesErreur().size());
 	}
 	
 	@After
