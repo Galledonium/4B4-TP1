@@ -13,14 +13,13 @@ import main.Plat;
 
 public class FichierTest {
 	
-	private Fichier fichierTest;
+	private Fichier fichier;
 	
 	@Before
 	public void setUp() throws IOException {
 		
-		fichierTest = new Fichier();
-		fichierTest.lire();
-		System.out.println("test");
+		fichier = new Fichier();
+		fichier.lire();
 		
 	}
 
@@ -28,7 +27,7 @@ public class FichierTest {
 	public void testAjoutClientDansListeClients() throws IOException {
 		
 
-		ArrayList<Client> liste = fichierTest.getListeClients();
+		ArrayList<Client> liste = fichier.getListeClients();
 		
 		for(Client client : liste) {
 			
@@ -42,7 +41,7 @@ public class FichierTest {
 	@Test
 	public void testAjoutClientDansListePlats() throws IOException {
 
-		ArrayList<Plat> liste = fichierTest.getListePlats();
+		ArrayList<Plat> liste = fichier.getListePlats();
 		
 		for(Plat plat : liste) {
 			
@@ -54,7 +53,7 @@ public class FichierTest {
 	@Test
 	public void testAjoutClientDansListeCommandes() throws IOException {
 
-		ArrayList<Commande> liste = fichierTest.getListeCommandes();
+		ArrayList<Commande> liste = fichier.getListeCommandes();
 		
 		for(Commande commande : liste) {
 			
@@ -66,42 +65,57 @@ public class FichierTest {
 	@Test
 	public void testNombreClientsDansListeClientsApresLectureFichier () throws IOException {
 		
-		assertEquals(3, fichierTest.getClientListSize());
+		assertEquals(3, fichier.getClientListSize());
 	}
 	
 	@Test
 	public void testNombreClientsDansListePlatsApresLectureFichier () throws IOException {
 		
-		assertEquals(3, fichierTest.getPlatListSize());
+		assertEquals(3, fichier.getPlatListSize());
 	}
 	
 	@Test
 	public void testNombreClientsDansListeCommandesApresLectureFichier () throws IOException {
 		
-		assertEquals(3, fichierTest.getCommandeListSize());
+		assertEquals(3, fichier.getCommandeListSize());
 		
 	}
 	
 	@Test
 	public void testSousTotalTPSTVQTotalClient() throws IOException{
 
-		assertEquals(4, fichierTest.getListeClients().get(0).getTabPrix().length);
+		assertEquals(4, fichier.getListeClients().get(0).getTabPrix().length);
 		
 	}
 	
 	@Test
 	public void testEcritureDansFichierFacture() throws IOException{
 		
-		fichierTest.ecrireFichier();
+		fichier.ecrireFichier();
 		
-		assertEquals(4, fichierTest.getListeClients().get(0).getTabPrix().length);
+		assertEquals(4, fichier.getListeClients().get(0).getTabPrix().length);
 		
+	}
+	
+	@Test
+	public void testMethodeVerifierCommande () {
+		String [] tab = new String[3];
+		
+		// Commande avec client inexistant, plat inexistant et quantité de commande entier
+		tab[0] = "Jeff";
+		tab[1] = "Poutine";
+		tab[2] = "2";
+		
+		String messageErreur = "\nLa commande (Jeff Poutine 2) est invalide car le client n'existe pas.\n";
+		
+		assertEquals(messageErreur, fichier.verifierCommande(tab));
+		assertEquals(1, fichier.getListeMessagesErreur().size());
 	}
 	
 	@After
 	public void tearDown() {
 		
-		fichierTest = null;
+		fichier = null;
 		
 	}
 
