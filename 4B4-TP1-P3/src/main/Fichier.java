@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Fichier {
@@ -15,22 +18,19 @@ public class Fichier {
 	
 	private BufferedReader reader;
 	
-	private static final String message = "Bienvenue chez Barette!\n" + "Factures:";
+	private static final String message = "Bienvenue chez Barette!";
+	private String messageErreur;
 	
 	private ArrayList<Client> listeClients = new ArrayList<Client>();
 	private ArrayList<Plat> listePlats = new ArrayList<Plat>();
 	private ArrayList<Commande> listeCommandes = new ArrayList<Commande>();
+	private ArrayList<String> listeMessagesErreur = new ArrayList<String>();
 	
 	private Client clientTemp;
 	private Plat platTemp;
 	
-<<<<<<< HEAD
-	private Path cheminFichier = Paths.get("src/main", "commandes.txt");
-	private final Path cheminSortie = Paths.get("src");
-=======
 	private Path cheminFichier = Paths.get("src/fichiers", "commandes.txt");
 	private final Path cheminSortie = Paths.get("src/fichiers");
->>>>>>> 67ab903200c4aadccb3939277333785002182ab1
 	
 	public Fichier () throws IOException {
 		
@@ -42,11 +42,7 @@ public class Fichier {
 		
 	}
 	
-<<<<<<< HEAD
 	public void lire () throws IOException {
-=======
-	public void lecture () throws IOException {
->>>>>>> 67ab903200c4aadccb3939277333785002182ab1
 		this.lireClients();
 	}
 	
@@ -111,9 +107,9 @@ public class Fichier {
 		
 		String [] tab;
 		
-		boolean toutEstValide = true;
-		
 		try {
+			
+			System.out.print(message + "\n");
 			
 			if (ligne.equals("Commandes :")) {
 				
@@ -123,18 +119,7 @@ public class Fichier {
 					
 					tab = ligne.split(" ");
 					
-					if (this.clientExists(tab) && this.platExists(tab) && !this.isColle(tab)) {
-									
-						Commande commande = new Commande (clientTemp, platTemp, Integer.parseInt(tab[2]));
-									
-						listeCommandes.add(commande);
-									
-						this.getPrixTotaux();
-									
-					} else {
-						System.out.println("Le fichier ne respecte pas le format demandé !");
-						toutEstValide = false;
-					}
+					verifierCommande(tab);
 					
 					ligne = reader.readLine();
 					
@@ -142,13 +127,21 @@ public class Fichier {
 				
 			}
 			
+			for(String erreur : listeMessagesErreur) {
+				
+				System.out.print(erreur);
+				
+			}
+			
+			System.out.println();
+			
+			this.afficherFactures();
+			
 		} finally {
 			reader.close();
+			
 		}
 		
-		if (toutEstValide) {
-			this.afficherFactures();
-		}
 	
 	}
 	
@@ -195,7 +188,6 @@ public class Fichier {
 		
 	}
 	
-<<<<<<< HEAD
 	public ArrayList<Client> getListeClients() {
 		
 		return listeClients;
@@ -232,15 +224,20 @@ public class Fichier {
 		
 	}
 	
-=======
->>>>>>> 67ab903200c4aadccb3939277333785002182ab1
 	private void afficherFactures() {
 		
-		System.out.println(message);
+		String facture = "";
 		
 		for(Client client : listeClients) {
 			
-			System.out.println(client.getNom() + " " + client.getPrixTotal() + "$");
+			facture = "Facture de : " + client.getNom() + " \n"
+					+ "============================" + " \n"
+					+ "Sous-total : \t" + "| " + client.getTabPrix()[0] + " $\n"
+					+ "TPS : \t\t" + "| " + client.getTabPrix()[1] + " $\n"
+					+ "TVQ : \t\t" + "| " + client.getTabPrix()[2] + " $\n"
+					+ "Prix total : \t" + "| " + client.getTabPrix()[3] + " $\n\n";
+			
+			System.out.print(facture);
 			
 		}
 		
@@ -287,16 +284,47 @@ public class Fichier {
 	}
 	
 	public void ecrireFichier () throws IOException {
-		FileWriter fichierSortie = new FileWriter(cheminSortie + "\\Facture.txt");
+		DateTimeFormatter formateDate = DateTimeFormatter.ofPattern("dd MM yyyy");
+		DateTimeFormatter formateHeure = DateTimeFormatter.ofPattern("HH");
+		
+		LocalDate dateActuelle = LocalDate.now();
+		LocalTime heureActuel = LocalTime.now();
+		
+		String extensionFichier = ".txt";
+		
+		String nomFichier = "Facture-du-[" + formateDate.format(dateActuelle) + "]-[" + formateHeure.format(heureActuel) + "]" + extensionFichier;
+		
+		FileWriter fichierSortie = new FileWriter(cheminSortie + "\\" + nomFichier);
 		BufferedWriter writer = new BufferedWriter(fichierSortie);
 		
 		try {
 			
+			String facture = "";
+			
 			writer.write(message + "\n");
 			
+			for(String erreur : listeMessagesErreur) {
+				
+				writer.write(erreur);
+				
+			}
+			
+			writer.write("\n");
+				
 			for(Client client : listeClients) {
 				
-				writer.write(client.getNom() + " " + client.getPrixTotal() + "$" + "\n");
+				if(client.getTabPrix()[3] > 0) {
+					
+					facture = "Facture de : " + client.getNom() + " \n"
+							+ "============================" + " \n"
+							+ "Sous-total : \t" + "| " + client.getTabPrix()[0] + " $\n"
+							+ "TPS : \t\t" + "| " + client.getTabPrix()[1] + " $\n"
+							+ "TVQ : \t\t" + "| " + client.getTabPrix()[2] + " $\n"
+							+ "Prix total : \t" + "| " + client.getTabPrix()[3] + " $\n\n";
+					
+					writer.write(facture);
+					
+				}
 				
 			}
 			
@@ -313,6 +341,77 @@ public class Fichier {
 				ex.printStackTrace();
 			}
 		}
+	}
+	
+	private String verifierCommande(String[] tab) {
+		
+		messageErreur = "";
+		
+		if(!this.clientExists(tab) && this.platExists(tab) && Double.parseDouble(tab[2]) % 1 == 0) {
+			
+			messageErreur = "\nLa commande (" + tab[0] + " " + tab[1] + " " + tab[2] + ") est invalide car le client n'existe pas.\n";
+			
+			listeMessagesErreur.add(messageErreur);
+			
+		}else if(!this.platExists(tab) && this.clientExists(tab) && Double.parseDouble(tab[2]) % 1 == 0) {
+			
+			messageErreur = "\nLa commande (" + tab[0] + " " + tab[1] + " " + tab[2] + ") est invalide car le plat n'existe pas.\n";
+			
+			listeMessagesErreur.add(messageErreur);
+			
+		}else if(!this.clientExists(tab) && !this.platExists(tab) && Double.parseDouble(tab[2]) % 1 == 0) {
+			
+			messageErreur = "\nLa commande (" + tab[0] + " " + tab[1] + " " + tab[2] + ") est invalide car le client et le plat n'existent pas.\n";
+			
+			listeMessagesErreur.add(messageErreur);
+			
+		}else if(!(Double.parseDouble(tab[2]) % 1 == 0) && this.clientExists(tab) && this.platExists(tab)) {
+			
+			messageErreur = "\nLa commande (" + tab[0] + " " + tab[1] + " " + tab[2] + ") est invalide car la quantité dans la commande est erronée.\n";
+			
+			listeMessagesErreur.add(messageErreur);
+			
+		}else if(!(Double.parseDouble(tab[2]) % 1 == 0) && !this.clientExists(tab) && this.platExists(tab)){
+			
+			messageErreur = "\nLa commande (" + tab[0] + " " + tab[1] + " " + tab[2] 
+					+ ") est invalide car le client n'existe pas et quantité dans la commande est erronée.\n";
+			
+			listeMessagesErreur.add(messageErreur);
+			
+		}else if(!(Double.parseDouble(tab[2]) % 1 == 0) && this.clientExists(tab) && !this.platExists(tab)) {
+		
+			messageErreur = "\nLa commande (" + tab[0] + " " + tab[1] + " " + tab[2] 
+					+ ") est invalide car le plat n'existe pas et quantité dans la commande est erronée.\n";
+			
+			listeMessagesErreur.add(messageErreur);
+		
+		}else if(this.isColle(tab)) {
+			
+			String msg = "";
+			
+			for(int i = 0; i < tab.length; i++) {
+				
+				msg += tab[i];
+				
+			}
+			
+			messageErreur = "La commande (" + msg + ") est invalide car le format de la commande est erronée.\n\n";
+			
+			listeMessagesErreur.add(messageErreur);
+			
+		}else if (this.clientExists(tab) && this.platExists(tab) && !this.isColle(tab)) {
+			
+			Commande commande = new Commande (clientTemp, platTemp, Integer.parseInt(tab[2]));
+						
+			listeCommandes.add(commande);
+						
+			this.getPrixTotaux();
+			
+						
+		}
+		
+		return messageErreur;
+		
 	}
 	
 }
