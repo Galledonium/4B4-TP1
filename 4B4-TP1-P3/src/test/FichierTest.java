@@ -1,24 +1,21 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.*;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import main.Client;
 import main.Commande;
 import main.Fichier;
 import main.Plat;
 
-class FichierTest {
+public class FichierTest {
 	
 	private Fichier fichierTest;
 	
-	@BeforeEach
+	@Before
 	public void setUp() throws IOException {
 		
 		fichierTest = new Fichier();
@@ -101,7 +98,7 @@ class FichierTest {
 		
 	}
 	
-	@AfterEach
+	@After
 	public void tearDown() {
 		
 		fichierTest = null;

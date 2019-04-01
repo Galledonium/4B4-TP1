@@ -1,0 +1,34 @@
+Bienvenue chez Barette!
+
+La commande (Big Repas_Hamburger 3) est invalide car le client et le plat n'existent pas.
+
+La commande (Jeff Frites 3.25) est invalide car le client n'existe pas.
+
+Facture de : Roger 
+============================ 
+Sous-total : 	| 10.5 $
+TPS : 		| 0.525 $
+TVQ : 		| 1.05 $
+Prix total : 	| 12.075 $
+
+Facture de : Céline 
+============================ 
+Sous-total : 	| 20.75 $
+TPS : 		| 1.0375 $
+TVQ : 		| 2.075 $
+Prix total : 	| 23.8625 $
+
+Facture de : Steeve 
+============================ 
+Sous-total : 	| 21.0 $
+TPS : 		| 1.05 $
+TVQ : 		| 2.1 $
+Prix total : 	| 24.15 $
+
+Facture de : Batman 
+============================ 
+Sous-total : 	| 0.0 $
+TPS : 		| 0.0 $
+TVQ : 		| 0.0 $
+Prix total : 	| 0.0 $
+

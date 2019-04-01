@@ -8,7 +8,7 @@ public class Executable {
 		
 		Fichier fichier = new Fichier();
 
-		fichier.lecture();
+		fichier.lire();
 		fichier.ecrireFichier();
 	}
 	
